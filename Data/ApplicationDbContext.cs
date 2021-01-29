@@ -6,6 +6,7 @@ using FilmManager.Models.Genre;
 using FilmManager.Models.Film;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace FilmManager.Data
 {
@@ -13,11 +14,11 @@ namespace FilmManager.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-        }
+        { }
 
-        public DbSet<Genre> Genres { get; set; }
         public DbSet<Film> Films { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
-    }
+    }    
 }
+

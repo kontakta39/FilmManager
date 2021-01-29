@@ -1,0 +1,60 @@
+﻿@model FilmManager.Models.Film.Film
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Details</h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Music)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Distributor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Distributor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReleaseYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReleaseYear)
+        </dd>
+    </dl>
+    <hr />
+</div>
+
+<a class="btn btn-primary"
+   asp-controller="Film"
+   asp-action="Edit"
+   asp-route-filmId="@Model.FilmId">Edit</a>
+<a class="btn btn-primary"
+   asp-controller="Film"
+   asp-action="Films"
+   asp-route-filmId="@Model.FilmId">Back to List</a>
+

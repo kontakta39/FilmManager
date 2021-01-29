@@ -7,7 +7,7 @@
 }
 
 <div>
-    <h1>Edit the current genre</h1>
+    <h4>Edit the current genre</h4>
     <form method="post" asp-controller="Genre" asp-action="Edit" asp-route-genreId="@(Model?.GenreId ?? 0)">
         <div asp-validation-summary="All" class="text-danger"></div>
         <p class="text-success">@ViewData["Success"]</p>
@@ -15,6 +15,6 @@
             <label asp-for="GenreName">Name</label>
             <input asp-for="GenreName" type="text" class="form-control" placeholder="Name...">
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

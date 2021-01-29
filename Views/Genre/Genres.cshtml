@@ -1,0 +1,55 @@
+﻿@{
+    @model System.Collections.Generic.List<FilmManager.Models.Genre.Genre>
+}
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        <a asp-controller="Genre" asp-action="Create" class="btn btn-primary text-white">Create new genre</a>
+    </div>
+</div>
+
+@if (Model == null || Model?.Count == 0)
+{
+    <h4 class="text-danger text-center">You haven't created any genres yet.</h4>
+}
+else
+{
+    <h4 class="text-left">List of all created genres</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Model)
+            {
+                <tr>
+                    <th scope="row">@(Model.IndexOf(genre) + 1)</th>
+                    <td>@genre.GenreName</td>
+                    <td>
+                        <a class="btn btn-primary"
+                           asp-controller="Genre"
+                           asp-action="Edit"
+                           asp-route-genreId="@genre.GenreId">Edit</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Genre"
+                           asp-action="Details"
+                           asp-route-genreId="@genre.GenreId">Details</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Genre"
+                           asp-action="Delete"
+                           asp-route-genreId="@genre.GenreId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

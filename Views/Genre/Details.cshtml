@@ -1,0 +1,31 @@
+﻿@model FilmManager.Models.Genre.Genre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Details</h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+    </dl>
+    <hr />
+</div>
+
+            <a class="btn btn-primary"
+               asp-controller="Genre"
+               asp-action="Edit"
+               asp-route-genreId="@Model.GenreId">Edit</a>
+            <a class="btn btn-primary"
+               asp-controller="Genre"
+               asp-action="Genres"
+               asp-route-genreId="@Model.GenreId">Back to List</a>
+</div>
+

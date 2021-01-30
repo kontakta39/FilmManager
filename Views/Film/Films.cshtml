@@ -1,6 +1,4 @@
-﻿@{
-    @model System.Collections.Generic.List<FilmManager.Models.Film.Film>
-}
+﻿@model System.Collections.Generic.List<FilmManager.Models.Film>
 
 @{
     ViewData["Title"] = "Films";
@@ -11,6 +9,16 @@
     <div class="col-md-2">
         <a asp-controller="Film" asp-action="Create" class="btn btn-primary text-white">Create new film</a>
     </div>
+</div>
+
+<h5 class="text-left">Search for created film</h5>
+<div class="form-control-static">
+    @using (Html.BeginForm("Search", "Film"))
+    {
+        <div class="form-group col-md-5">
+            @Html.Editor("SearchBox", new { htmlAttributes = new { @class = "form-control", placeholder = "Search" } })
+        </div>
+    }
 </div>
 
 @if (Model == null || Model?.Count == 0)
@@ -36,29 +44,29 @@ else
         <tbody>
             @foreach (var film in Model)
             {
-            <tr>
-                <th scope="row">@(Model.IndexOf(film) + 1)</th>
-                <td>@film.Title</td>
-                <td>@film.Genre</td>
-                <td>@film.Director</td>
-                <td>@film.Music</td>
-                <td>@film.Distributor</td>
-                <td>@film.ReleaseYear</td>
-                <td>
-                    <a class="btn btn-primary"
-                       asp-controller="Film"
-                       asp-action="Edit"
-                       asp-route-filmId="@film.FilmId">Edit</a>
-                    <a class="btn btn-primary"
-                       asp-controller="Film"
-                       asp-action="Details"
-                       asp-route-filmId="@film.FilmId">Details</a>
-                    <a class="btn btn-primary"
-                       asp-controller="Film"
-                       asp-action="Delete"
-                       asp-route-filmId="@film.FilmId">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row">@(Model.IndexOf(film) + 1)</th>
+                    <td>@film.Title</td>
+                    <td>@film.Genre</td>
+                    <td>@film.Director</td>
+                    <td>@film.Music</td>
+                    <td>@film.Distributor</td>
+                    <td>@film.ReleaseYear</td>
+                    <td>
+                        <a class="btn btn-primary"
+                           asp-controller="Film"
+                           asp-action="Edit"
+                           asp-route-filmId="@film.FilmId">Edit</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Film"
+                           asp-action="Details"
+                           asp-route-filmId="@film.FilmId">Details</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Film"
+                           asp-action="Delete"
+                           asp-route-filmId="@film.FilmId">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

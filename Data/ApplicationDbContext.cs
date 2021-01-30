@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using FilmManager.Models.Account;
-using FilmManager.Models.Genre;
-using FilmManager.Models.Film;
+using FilmManager.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

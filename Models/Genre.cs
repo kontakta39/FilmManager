@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmManager.Models.Genre
+namespace FilmManager.Models
 {
     public class Genre
     {

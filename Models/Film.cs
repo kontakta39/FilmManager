@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using FilmManager.Models.Genre;
 using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace FilmManager.Models.Film
+namespace FilmManager.Models
 {
     public class Film
     {

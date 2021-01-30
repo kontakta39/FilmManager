@@ -1,6 +1,6 @@
 ﻿using FilmManager.Data;
 using FilmManager.Models.Account;
-using FilmManager.Models.Film;
+using FilmManager.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +21,22 @@ namespace FilmManager.Controllers
             this.context = context;
         }
 
+        public ActionResult Search(string SearchBox)
+        {
+            var films = (from t in context.Films
+                          where
+                              t.Title.Contains(SearchBox)
+                              || t.Genre.Contains(SearchBox)
+                              || t.Director.Contains(SearchBox)
+                              || t.Music.Contains(SearchBox)
+                              || t.Distributor.Contains(SearchBox)                            
+                         select t).ToList();
+            return View("Films", films);
+        }
+
         public async Task<ActionResult> Films()
         {
-            // 1. Take all genres as list
+            // 1. Take all films as list
             List<Film> films = await context.Films.ToListAsync();
 
             // 2. Return the view

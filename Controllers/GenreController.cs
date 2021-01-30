@@ -1,6 +1,6 @@
 ﻿using FilmManager.Data;
 using FilmManager.Models.Account;
-using FilmManager.Models.Genre;
+using FilmManager.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +19,15 @@ namespace FilmManager.Controllers
         {
             this.userManager = userManager;
             this.context = context;
+        }
+
+        public ActionResult Search(string SearchBox)
+        {
+            var genres = (from t in context.Genres
+                          where
+                              t.GenreName.Contains(SearchBox)
+                          select t).ToList();
+            return View("Genres", genres);
         }
 
         public async Task<ActionResult> Genres()

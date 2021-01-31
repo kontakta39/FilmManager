@@ -40,6 +40,7 @@ namespace FilmManager.Models
         [NotMapped]
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
-        //public virtual ICollection<Director> Directors { get; set; }
+        public virtual ICollection<Director> Directors { get; set; }
+
     }
 }

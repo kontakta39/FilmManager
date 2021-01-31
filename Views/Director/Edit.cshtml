@@ -1,0 +1,32 @@
+﻿@model FilmManager.Models.Director
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div>
+    <h4>Edit the current genre</h4>
+    <form method="post" asp-controller="Director" asp-action="Edit" asp-route-directorId="@(Model?.DirectorId ?? 0)">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <p class="text-success">@ViewData["Success"]</p>
+        <div class="form-group">
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control" placeholder="">
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control" placeholder="">
+            <label asp-for="FilmId">Film</label>
+            <select asp-for="FilmId" class="browser-default custom-select">
+                <option selected>Select...</option>
+                @foreach (var film in Model.Films)
+                {
+                    <option value="@film.FilmId">@film.Title</option>
+                }
+            </select>
+            <label asp-for="Nationality">Nationality</label>
+            <input asp-for="Nationality" type="text" class="form-control" placeholder="">
+            <label asp-for="BirthYear">Birth Year</label>
+            <input asp-for="BirthYear" type="number" class="form-control" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

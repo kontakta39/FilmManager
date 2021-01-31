@@ -1,0 +1,89 @@
+﻿@model System.Collections.Generic.List<FilmManager.Models.Director>
+
+@{
+    ViewData["Title"] = "Directors";
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <a asp-controller="Director" asp-action="Create" class="btn btn-primary text-white">Create new director</a>
+        </div>
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h5 class="text-left">Search for created director</h5>
+    <div class="form-control-static">
+        @using (Html.BeginForm("Search", "Director"))
+        {
+            <div class="form-group col-md-5">
+                @Html.Editor("SearchBox", new { htmlAttributes = new { @class = "form-control", placeholder = "Search" } })
+            </div>
+        }
+    </div>
+}
+
+@if (Model == null || Model?.Count == 0)
+{
+    <h4 class="text-center">There are no created directors yet.</h4>
+}
+else
+{
+    <h4 class="text-left">List of all created directors</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Film</th>
+                <th scope="col">Nationality</th>
+                <th scope="col">Birth Year</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var director in Model)
+            {
+            <tr>
+                <th scope="row">@(Model.IndexOf(director) + 1)</th>
+                <td>@director.FirstName</td>
+                <td>@director.LastName</td>
+                <td>@director.FilmId</td>
+                <td>@director.Nationality</td>
+                <td>@director.BirthYear</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a class="btn btn-primary"
+                           asp-controller="Director"
+                           asp-action="Edit"
+                           asp-route-directorId="@director.DirectorId">Edit</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Director"
+                           asp-action="Details"
+                           asp-route-directorId="@director.DirectorId">Details</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Director"
+                           asp-action="Delete"
+                           asp-route-directorId="@director.DirectorId">Delete</a>
+                    </td>
+                }
+                @if (User.IsInRole("Guest"))
+                {
+                    <td>
+                        <a class="btn btn-primary"
+                           asp-controller="Director"
+                           asp-action="Details"
+                           asp-route-directorId="@director.DirectorId">Details</a>
+                    </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+}

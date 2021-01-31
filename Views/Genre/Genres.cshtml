@@ -4,25 +4,31 @@
     ViewData["Title"] = "Genres";
 }
 
-<div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-        <a asp-controller="Genre" asp-action="Create" class="btn btn-primary text-white">Create new genre</a>
-    </div>
-</div>
-
-<h5 class="text-left">Search for created genre</h5>
-<div class="form-control-static">
-    @using (Html.BeginForm("Search", "Genre"))
-    {
-        <div class="form-group col-md-5">
-            @Html.Editor("SearchBox", new { htmlAttributes = new { @class = "form-control", placeholder = "Search" } })
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <a asp-controller="Genre" asp-action="Create" class="btn btn-primary text-white">Create new genre</a>
         </div>
-        @*<div class="form-group col-md-2">
-                <input class="btn btn-primary text-white" type="submit" value="Search" />
-            </div>*@
-    }
-</div>
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h5 class="text-left">Search for created genre</h5>
+    <div class="form-control-static">
+        @using (Html.BeginForm("Search", "Genre"))
+        {
+            <div class="form-group col-md-5">
+                @Html.Editor("SearchBox", new { htmlAttributes = new { @class = "form-control", placeholder = "Search" } })
+            </div>
+            @*<div class="form-group col-md-2">
+                    <input class="btn btn-primary text-white" type="submit" value="Search" />
+                </div>*@
+        }
+    </div>
+}
 
 @if (Model == null || Model?.Count == 0)
 {
@@ -45,20 +51,32 @@ else
                 <tr>
                     <th scope="row">@(Model.IndexOf(genre) + 1)</th>
                     <td>@genre.GenreName</td>
-                    <td>
-                        <a class="btn btn-primary"
-                           asp-controller="Genre"
-                           asp-action="Edit"
-                           asp-route-genreId="@genre.GenreId">Edit</a>
-                        <a class="btn btn-primary"
-                           asp-controller="Genre"
-                           asp-action="Details"
-                           asp-route-genreId="@genre.GenreId">Details</a>
-                        <a class="btn btn-primary"
-                           asp-controller="Genre"
-                           asp-action="Delete"
-                           asp-route-genreId="@genre.GenreId">Delete</a>
-                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a class="btn btn-primary"
+                               asp-controller="Genre"
+                               asp-action="Edit"
+                               asp-route-genreId="@genre.GenreId">Edit</a>
+                            <a class="btn btn-primary"
+                               asp-controller="Genre"
+                               asp-action="Details"
+                               asp-route-genreId="@genre.GenreId">Details</a>
+                            <a class="btn btn-primary"
+                               asp-controller="Genre"
+                               asp-action="Delete"
+                               asp-route-genreId="@genre.GenreId">Delete</a>
+                        </td>
+                    }
+                    @if (User.IsInRole("Guest"))
+                    {
+                        <td>
+                            <a class="btn btn-primary"
+                               asp-controller="Genre"
+                               asp-action="Details"
+                               asp-route-genreId="@genre.GenreId">Details</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

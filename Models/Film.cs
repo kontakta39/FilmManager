@@ -13,7 +13,7 @@ namespace FilmManager.Models
 
         public int FilmId { get; set; }
 
-        [Required(ErrorMessage = "Title name is required")]
+        [Required(ErrorMessage = "Title is required")]
         [MaxLength(50)]
         public string Title { get; set; }
 
@@ -23,14 +23,14 @@ namespace FilmManager.Models
         //public string Genre { get; set; }
         public int GenreId { get; set; }
 
-        [Required(ErrorMessage = "Director name is required")]
-        [MaxLength(50)]
-        public string Director { get; set; }
-
         [Required(ErrorMessage = "Music author is required")]
         [Display(Name = "Music Author")]
         [MaxLength(50)]
         public string Music { get; set; }
+
+        [Required(ErrorMessage = "Distributor name is required")]
+        [MaxLength(50)]
+        public string Distributor { get; set; }
 
         [Required(ErrorMessage = "Release year is required")]
         [Display(Name = "Release Year")]
@@ -38,8 +38,8 @@ namespace FilmManager.Models
         public int ReleaseYear { get; set; }
 
         [NotMapped]
-        //public virtual Genre genre { get; set; }
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
+        //public virtual ICollection<Director> Directors { get; set; }
     }
 }

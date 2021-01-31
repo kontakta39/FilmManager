@@ -32,14 +32,11 @@ namespace FilmManager.Controllers
 
         public async Task<ActionResult> Films()
         {
-            // 1. Take all films as list
             List<Film> films = await context.Films.ToListAsync();
 
-            // 2. Return the view
             return View(films);
         }
 
-        // GET: Genre/Details/5
         public async Task<IActionResult> Details(int? filmId)
         {
             if (filmId == null)
@@ -60,13 +57,11 @@ namespace FilmManager.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            // 1. Get all genres
             Film film = new Film()
             {
                 Genres = await context.Genres.ToListAsync()
             };
 
-            // 2. Return the model to the view
             return View(film);
 
         }
@@ -88,11 +83,9 @@ namespace FilmManager.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int filmId)
         {
-            // 1. Get the car from the database by the received id
             Film film = await context.Films.FindAsync(filmId);
             film.Genres = await context.Genres.ToListAsync();
 
-            // 2. Return the car to the View
             return View(film);
         }
 
@@ -128,6 +121,5 @@ namespace FilmManager.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Films");
         }
-
     }
 }

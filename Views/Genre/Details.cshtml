@@ -19,10 +19,13 @@
     <hr />
 </div>
 
-<a class="btn btn-primary"
-   asp-controller="Genre"
-   asp-action="Edit"
-   asp-route-genreId="@Model.GenreId">Edit</a>
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary"
+       asp-controller="Genre"
+       asp-action="Edit"
+       asp-route-genreId="@Model.GenreId">Edit</a>
+}
 <a class="btn btn-primary"
    asp-controller="Genre"
    asp-action="Genres"

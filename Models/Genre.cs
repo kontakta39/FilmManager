@@ -16,6 +16,6 @@ namespace FilmManager.Models
         public string GenreName { get; set; }
 
         //public List<Film> Films { get; set; } = new List<Film>();
-        //public virtual ICollection<Film> Films { get; set; }
+        public virtual ICollection<Film> Films { get; set; }
     }
 }

@@ -24,12 +24,8 @@ namespace FilmManager.Controllers
         public ActionResult Search(string SearchBox)
         {
             var films = (from t in context.Films
-                          where
-                              t.Title.Contains(SearchBox)
-                              || t.Genre.Contains(SearchBox)
-                              || t.Director.Contains(SearchBox)
-                              || t.Music.Contains(SearchBox)
-                              || t.Distributor.Contains(SearchBox)                            
+                         where
+                             t.Title.Contains(SearchBox)
                          select t).ToList();
             return View("Films", films);
         }
@@ -62,9 +58,17 @@ namespace FilmManager.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            // 1. Get all genres
+            Film film = new Film()
+            {
+                Genres = await context.Genres.ToListAsync()
+            };
+
+            // 2. Return the model to the view
+            return View(film);
+
         }
 
         [HttpPost]
@@ -84,7 +88,11 @@ namespace FilmManager.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int filmId)
         {
+            // 1. Get the car from the database by the received id
             Film film = await context.Films.FindAsync(filmId);
+            film.Genres = await context.Genres.ToListAsync();
+
+            // 2. Return the car to the View
             return View(film);
         }
 

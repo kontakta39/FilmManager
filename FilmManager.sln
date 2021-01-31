@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmManager", "FilmManager\FilmManager.csproj", "{258C0988-6783-44D0-A109-44D5C67F7F41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmManager", "FilmManager\FilmManager.csproj", "{874D6E32-A132-4180-B332-49EF444C9B68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{258C0988-6783-44D0-A109-44D5C67F7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{258C0988-6783-44D0-A109-44D5C67F7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{258C0988-6783-44D0-A109-44D5C67F7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{258C0988-6783-44D0-A109-44D5C67F7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{874D6E32-A132-4180-B332-49EF444C9B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874D6E32-A132-4180-B332-49EF444C9B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874D6E32-A132-4180-B332-49EF444C9B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874D6E32-A132-4180-B332-49EF444C9B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FAAEDA29-9BC9-45D6-A382-109E2146AA6F}
+		SolutionGuid = {3D30DCE7-DEC3-4DA4-ACCB-633A4C54125B}
 	EndGlobalSection
 EndGlobal

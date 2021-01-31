@@ -35,8 +35,7 @@ else
                 <th scope="col">Title</th>
                 <th scope="col">Genre</th>
                 <th scope="col">Director</th>
-                <th scope="col">Music Author</th>
-                <th scope="col">Distributor</th>
+                <th scope="col">Music</th>
                 <th scope="col">Release Year</th>
                 <th scope="col"></th>
             </tr>
@@ -47,10 +46,9 @@ else
                 <tr>
                     <th scope="row">@(Model.IndexOf(film) + 1)</th>
                     <td>@film.Title</td>
-                    <td>@film.Genre</td>
+                    <td>@film.GenreId</td>
                     <td>@film.Director</td>
                     <td>@film.Music</td>
-                    <td>@film.Distributor</td>
                     <td>@film.ReleaseYear</td>
                     <td>
                         <a class="btn btn-primary"
@@ -71,4 +69,3 @@ else
         </tbody>
     </table>
 }
-

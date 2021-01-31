@@ -112,3 +112,4 @@ namespace FilmManager.Areas.Identity.Pages.Account
         }
     }
 }
+

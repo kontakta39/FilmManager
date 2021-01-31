@@ -16,10 +16,10 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.DisplayNameFor(model => model.GenreId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
+            @Html.DisplayFor(model => model.GenreId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Director)
@@ -32,12 +32,6 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Music)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Distributor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Distributor)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ReleaseYear)
@@ -57,4 +51,3 @@
    asp-controller="Film"
    asp-action="Films"
    asp-route-filmId="@Model.FilmId">Back to List</a>
-

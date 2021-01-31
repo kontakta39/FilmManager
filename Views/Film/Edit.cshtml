@@ -12,14 +12,18 @@
         <div class="form-group">
             <label asp-for="Title">Title</label>
             <input asp-for="Title" type="text" class="form-control" placeholder="">
-            <label asp-for="Genre">Genre</label>
-            <input asp-for="Genre" type="text" class="form-control" placeholder="">
+            <label asp-for="GenreId">Genre</label>
+            <select asp-for="GenreId" class="browser-default custom-select">
+                <option selected>Select...</option>
+                @foreach (var genre in Model.Genres)
+                {
+                    <option value="@genre.GenreId">@genre.GenreName</option>
+                }
+            </select>
             <label asp-for="Director">Director</label>
             <input asp-for="Director" type="text" class="form-control" placeholder="">
             <label asp-for="Music">Music</label>
             <input asp-for="Music" type="text" class="form-control" placeholder="">
-            <label asp-for="Distributor">Distributor</label>
-            <input asp-for="Distributor" type="text" class="form-control" placeholder="">
             <label asp-for="ReleaseYear">Release Year</label>
             <input asp-for="ReleaseYear" type="number" class="form-control" placeholder="">
         </div>
